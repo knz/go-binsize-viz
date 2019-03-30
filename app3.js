@@ -1,4 +1,4 @@
-function viewTree(el_id, fileName) {
+function viewTree(el_id, divHeight, fileName) {
 	/**
 	 * Interactive, zoomable treemap, using D3 v4
 	 * http://bl.ocks.org/guglielmo/16d880a6615da7f502116220cb551498
@@ -13,7 +13,7 @@ function viewTree(el_id, fileName) {
 	var divWidth = obj.offsetWidth;
 	var margin = {top: 30, right: 0, bottom: 20, left: 0},
 		width = divWidth -25,
-		height = 600 - margin.top - margin.bottom,
+		height = divHeight - margin.top - margin.bottom,
 		transitioning,
 		formatSize = d3.format(".2s"),
 		formatP = d3.format(".2p"),

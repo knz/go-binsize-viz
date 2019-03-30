@@ -29,7 +29,7 @@ Apply tools in order (Python 3 required):
 
 2. open browser on https://localhost:8000/cockroach_sizes.html
 
-## Origin of D3 source code
+## Origin of the D3 viz source code
 
 This repo uses D3 visualization code inspired from / modifying the
 following sources:
