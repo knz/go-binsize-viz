@@ -28,3 +28,12 @@ Apply tools in order (Python 3 required):
 1. `python3 -m http.server`
 
 2. open browser on https://localhost:8000/cockroach_sizes.html
+
+## Origin of D3 source code
+
+This repo uses D3 visualization code inspired from / modifying the
+following sources:
+
+-  Jacques Jahnichen's zoomable treemap at http://bl.ocks.org/JacquesJahnichen/42afd0cde7cbf72ecb81
+
+- ported to D3 v4 by Guglielmo Celata at http://bl.ocks.org/guglielmo/16d880a6615da7f502116220cb551498
