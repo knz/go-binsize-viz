@@ -3,9 +3,9 @@
 This directory contains code and data to visualize the contents of Go
 binaries.
 
-Apply tools in order:
+Apply tools in order (Python 3 required):
 
-1. `go tool nm -size <binary file>` and redirect to some file, e.g. `symtab.txt`
+1. `go tool nm -size <binary file> | c++filt` and redirect to some file, e.g. `symtab.txt`
 
   provided with the Go toolchain.
 

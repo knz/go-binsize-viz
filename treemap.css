@@ -1,0 +1,73 @@
+.chart {
+	max-width: 100%;
+	overflow:auto;
+}
+text {
+	pointer-events: none;
+}
+.grandparent text {
+	font-weight: bold;
+}
+rect {
+	stroke: #00f;
+	stroke-width: 1px;
+}
+rect.parent,
+.grandparent rect {
+	stroke: #fff;
+	stroke-width: 1px;
+}
+.grandparent:hover rect {
+	fill: grey;
+}
+.children rect.parent,
+.grandparent rect {
+	cursor: pointer;
+}
+.children rect.child {
+	opacity: 0;
+}
+.children rect.parent {
+}
+.children:hover rect.child {
+	opacity: 1;
+	stroke-width: 1px;
+}
+.children:hover rect.parent {
+	opacity: 0;
+}
+.legend {
+	margin-bottom:8px !important;
+}
+.legend rect {
+	stroke-width: 0px;
+}
+.legend text {
+	text-anchor: middle;
+	pointer-events: auto;
+	font-size: 13px;
+	font-family: sans-serif;
+	fill: black;
+}
+.form-group {
+	text-align:left;
+}
+.textdiv {
+	font-family: "Open Sans",Helvetica,Arial,sans-serif;
+	font-size: 14px;
+	padding: 7px;
+	cursor: pointer;
+	overflow:none;
+}
+.textdiv .title {
+	font-size: 102%;
+	font-weight: bold;
+	margin-top: 8px;
+	font-size:11px !important;
+}
+.textdiv p{
+	line-height: 13px;
+	margin:0 0 4px !important;
+	padding:0px;
+	font-size:10px !important;
+}
