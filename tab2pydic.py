@@ -225,7 +225,7 @@ with open(sys.argv[1]) as f:
             continue
 
         typ = m.group(3).strip()
-        if typ == 'U' or typ == 'D':
+        if typ == 'U':
             # external object, skip
             continue
 
@@ -279,7 +279,7 @@ with open(sys.argv[1]) as f:
         path = partsre.findall(path)
         name = parts.group(1) + parts.group(3)
 
-        # print(sz, "##", parts.group(2), "##", path, "##", parts.group(1), "##", parts.group(3), file=sys.stderr)
+        #print(sz, "##", parts.group(2), "##", path, "##", parts.group(1), "##", parts.group(3), file=sys.stderr)
 
         store(prefix+path+[name], sz)
         
