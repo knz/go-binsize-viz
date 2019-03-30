@@ -3,6 +3,10 @@
 This directory contains code and data to visualize the contents of Go
 binaries.
 
+## Example output
+
+![screenshot](size-demo-ss.png)
+
 ## How to use
 
 Apply tools in order (Python 3 required):
