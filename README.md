@@ -21,13 +21,13 @@ Apply tools in order (Python 3 required):
 
 4. `python3 -m http.server`
 
-5. open browser on https://localhost:8000/treemap_v3.html
+5. open browser on http://localhost:8000/treemap_v3.html
 
 ## Included example data using CockroachDB
 
 1. `python3 -m http.server`
 
-2. open browser on https://localhost:8000/cockroach_sizes.html
+2. open browser on http://localhost:8000/cockroach_sizes.html
 
 ## Origin of the D3 viz source code
 
