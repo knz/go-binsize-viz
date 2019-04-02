@@ -163,6 +163,7 @@ golastpart = r'''
          )
       )?    # opt ,xxx interface suffix
     | initdone\.
+    | initdone·
 '''
 
 golastpartre = re.compile('('+golastpart + ')$', re.X|re.A)
