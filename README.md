@@ -23,6 +23,12 @@ Apply tools in order (Python 3 required):
 
 5. open browser on http://localhost:8000/treemap_v3.html
 
+## use docker
+
+```shell
+docker run -v $GOPATH/bin/:/go/bin -p 8000:8000 odedp/go-binsize-viz -b /go/bin/dep
+```
+
 ## Included example data using CockroachDB
 
 1. `python3 -m http.server`
@@ -34,6 +40,6 @@ Apply tools in order (Python 3 required):
 This repo uses D3 visualization code inspired from / modifying the
 following sources:
 
--  Jacques Jahnichen's zoomable treemap at http://bl.ocks.org/JacquesJahnichen/42afd0cde7cbf72ecb81
+- Jacques Jahnichen's zoomable treemap at http://bl.ocks.org/JacquesJahnichen/42afd0cde7cbf72ecb81
 
 - ported to D3 v4 by Guglielmo Celata at http://bl.ocks.org/guglielmo/16d880a6615da7f502116220cb551498
