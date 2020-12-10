@@ -6,9 +6,6 @@ ENV USER=go-binsize-viz
 ENV GROUP=go-binsize-viz
 
 ENV HOME_DIRECTORY=/home/go-binsize-viz/
-ENV BIN_DIRECTORY=/home/go-binsize-viz/bin
-ENV LOG_DIRECTORY=/home/go-binsize-viz/template
-ENV LIB_DIRECTORY=/home/go-binsize-viz/lib
 ENV LANG C.UTF-8
 
 
@@ -28,17 +25,11 @@ RUN install -d -D -o ${USER} -g ${GROUP} ${HOME_DIRECTORY}/bin \
     ${HOME_DIRECTORY}/lib \
     ${HOME_DIRECTORY}/templates
 
+ADD . ${HOME_DIRECTORY}/
 
-ADD tab2pydic.py ${HOME_DIRECTORY}/lib
-ADD simplify.py ${HOME_DIRECTORY}/lib
-ADD app3.js ${HOME_DIRECTORY}/templates/app3.js
-ADD js ${HOME_DIRECTORY}/templates/js
-ADD treemap* ${HOME_DIRECTORY}/templates/
-ADD go-binsize-viz.sh ${HOME_DIRECTORY}/bin/
-
-RUN chmod +x ${HOME_DIRECTORY}/bin/go-binsize-viz.sh 
+RUN chmod +x ${HOME_DIRECTORY}/go-binsize-viz.sh
 
 WORKDIR ${HOME_DIRECTORY}/
 USER go-binsize-viz
 
-ENTRYPOINT [ "/home/go-binsize-viz/bin/go-binsize-viz.sh" ]
+ENTRYPOINT [ "/home/go-binsize-viz/go-binsize-viz.sh" ]
