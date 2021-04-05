@@ -13,6 +13,19 @@ def flatten(d):
     return vals
 
 def transform(d):
+    # transform [A, B., X] into  [A, B/, _self_, X]  if [A, B/] also exists already.
+    maybecopy = None
+    for k in d:
+        if k.endswith('.'):
+            dirkey = k[:-1] + '/'
+            if dirkey in d:
+                if maybecopy is None:
+                    maybecopy = d.copy()
+                maybecopy[dirkey]['children']['· self'] = d[k]
+                del(maybecopy[k])
+    if maybecopy is not None:
+        d = maybecopy
+
     for k, v in list(d.items()):
         if type(v) == type({}):
             ename, v = transform(v)

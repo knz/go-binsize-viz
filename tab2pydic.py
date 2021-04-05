@@ -143,6 +143,7 @@ gopathpartsre = re.compile(gopathparts, re.X|re.A)
 golastpart = r'''
       (?:
         (?:
+            \.?
             (?:
                (?:\w|-|%)+    # regular name
              | \( [^()]* \)   # v1.x go 
@@ -159,7 +160,7 @@ golastpart = r'''
          (?:
           (?:(?:\w|\.|-|%)+/)*
           (?:\w|-|%|\.)+
-          | interface\s\{[^{}]*\}
+          | interface\s\{ (?: [^{}] | \{ [^{}]* \} )* \}
          )
       )?    # opt ,xxx interface suffix
     | initdone\.
@@ -282,7 +283,10 @@ with open(sys.argv[1]) as f:
 
         #print(sz, "##", parts.group(2), "##", path, "##", parts.group(1), "##", parts.group(3), file=sys.stderr)
 
-        store(prefix+path+[name], sz)
+        fullpath = prefix+path+[name]
+        # print(sz, "##", fullpath)
+
+        store(fullpath, sz)
         
         if c % 1000 == 0:
             print(".", end="", file=sys.stderr)
