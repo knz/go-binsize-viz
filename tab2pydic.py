@@ -30,7 +30,21 @@ tmplpart = r'''
                                 [^<>]
                               | (?:
                                   <
-                                    [^<>]*
+                                    (?:
+                                      [^<>]
+                                    | (?:
+                                        <
+                                          (?:
+                                            [^<>]
+                                          | (?:
+                                              <
+                                                [^<>]*
+                                              >
+                                            )
+                                          )*
+                                        >
+                                      )
+                                    )*
                                   >
                                 )
                               )*
@@ -110,6 +124,9 @@ cppsymre = re.compile(r'''
   (?:'''+parengroup+'''
       (?:\sconst)?                # maybe " const"
       (?:\s\[.*\])?               # maybe words
+      (?:\s\(
+          (?:\.(?:constprop|part|isra).\d+)+
+      \))?    # maybe (.constprop.NNN)
   )?
   (?:\*+)?                    # maybe ptr
 )
