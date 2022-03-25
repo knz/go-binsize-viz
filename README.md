@@ -23,11 +23,14 @@ Apply tools in order (Python 3 required):
 
 5. open browser on http://localhost:8000/treemap_v3.html
 
-## use docker
+### Using Docker
 
+For example:
 ```shell
 docker run -v $GOPATH/bin/:/go/bin -p 8000:8000 odedp/go-binsize-viz -b /go/bin/dep
 ```
+
+(Use `-b` to target the Go executable.)
 
 ## Included example data using CockroachDB
 
@@ -43,3 +46,17 @@ following sources:
 - Jacques Jahnichen's zoomable treemap at http://bl.ocks.org/JacquesJahnichen/42afd0cde7cbf72ecb81
 
 - ported to D3 v4 by Guglielmo Celata at http://bl.ocks.org/guglielmo/16d880a6615da7f502116220cb551498
+
+## Licensing
+
+The Python bits (and thus the Docker embedding) are licensed under the
+Affero GPL3. This requires derived software to also use AGPL3, and
+prevents network usage without distribution of source code.
+
+The D3 / Javascript bits in `app3.js` (see previous section) are currently
+UNLICENSED. They cannot be reused in derived work or other applications
+without direct permission from the original author.
+
+The files in the `js` subdirectory are imported from the D3.js project
+(https://d3js.org/) and are licensed under the terms of the 3-Clause
+BSD license.

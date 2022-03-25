@@ -1,0 +1,5 @@
+The files in this directory are imported from the D3.js project.
+See: https://d3js.org/
+
+They are licensed under the 3-Clause BSD license.
+See: https://opensource.org/licenses/BSD-3-Clause
