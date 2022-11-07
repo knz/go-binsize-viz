@@ -165,6 +165,7 @@ gopathparts = r'''
   | \$?(?:\w|-|%)+\.      # fun.
   | glob\.\.              # glob..
   | \.gobytes\.           # .gobytes.
+  | \.dict\.              # .dict.
   | (?:\w|\.|-|%)+/       # path/
 '''
 
@@ -179,6 +180,7 @@ golastpart = r'''
             \.?
             (?:
                (?:\w|-|%)+    # regular name
+               (?:\[[^\]+]\])?          # optional template params
              | \( [^()]* \)   # v1.x go 
             )
             (?:-fm)?)  # name

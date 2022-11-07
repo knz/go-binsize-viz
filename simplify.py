@@ -24,8 +24,9 @@ values['name'] = '>'
 def flatten(d):
     vals = []
     for k, v in d.items():
-        v['name'] = k
-        vals.append(v)
+        if isinstance(v, dict):
+            v['name'] = k
+            vals.append(v)
     return vals
 
 def transform(d):
