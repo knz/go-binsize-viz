@@ -82,8 +82,10 @@ generate_data_file() {
 
 copy_resources() {
 	printf "$(date "+%F %H:%M:%S") ${GREEN} %s${RESET}\n" "copy resources to ${tmpdir}"
-	cp -r ./js ${tmpdir}/app3.js
-	cp -r ./app3.js ${tmpdir}/app3.js
+	cp -r ./js ${tmpdir}/js
+	cp ./app3.js ${tmpdir}/app3.js
+	cp ./treemap.css ${tmpdir}/treemap.css
+	cp ./treemap_v3.html ${tmpdir}/treemap_v3.html
 }
 
 check_and_exist() {
