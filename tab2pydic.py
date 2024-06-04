@@ -156,13 +156,13 @@ gopathparts = r'''
        | \( [^()]* \)
       )*
     \)\.                  # (*Foo)., (*struct{... () }).
-  | struct\s\{
+  | (?: struct | interface)\s\{
      (?:
         [^{}]
       | \{[^{}]*\}
      )*
     \}\.                  # struct { ... }.
-  | \$?(?:\w|-|%)+\.      # fun.
+  | \$?(?: (?:\w|-|%)+ (?:\[ (?: [^\]] | \[ [^\]]* \])+ \])? )\.      # fun. (with opt templ params)
   | glob\.\.              # glob..
   | \.gobytes\.           # .gobytes.
   | \.dict\.              # .dict.
@@ -180,8 +180,8 @@ golastpart = r'''
             \.?
             (?:
                (?:\w|-|%)+    # regular name
-               (?:\[[^\]+]\])?          # optional template params
-             | \( [^()]* \)   # v1.x go 
+               (?:\[ (?: [^\]] | \[ [^\]]* \])+ \])?          # optional template params
+             | \( [^()]* \)   # v1.x go
             )
             (?:-fm)?)  # name
       | struct\s\{
@@ -197,6 +197,8 @@ golastpart = r'''
           (?:\w|-|%|\.)+
           | interface\s\{ (?: [^{}] | \{ [^{}]* \} )* \}
          )
+         |
+         (?: '''+gopathparts+''' ).*
       )?    # opt ,xxx interface suffix
     | initdone\.
     | initdone·
@@ -209,7 +211,10 @@ golastpartre = re.compile('('+golastpart + ')$', re.X|re.A)
 gosymre = re.compile(r'''
 ^
   (
-    (?:go\.itab\.\*?)?
+    (?:
+       (?:go[:\.]itab\.\*?)
+     | go:
+    )?
   )
   (
     (?:'''+gopathparts+''')*
@@ -291,7 +296,7 @@ with open(sys.argv[1]) as f:
             # c++ type metadata
             typeinfo_sz += sz
             continue
-        if sym.startswith('type..'):
+        if sym.startswith('type..') or sym.startswith('type:'):
             # go generated type equality and hash functions
             gotyp_sz += sz
             continue
