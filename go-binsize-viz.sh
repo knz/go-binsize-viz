@@ -75,9 +75,9 @@ main_getopts() {
 
 generate_data_file() {
 	printf "$(date "+%F %H:%M:%S") ${GREEN} %s${RESET}\n" "running go tool on ${binary}"
-	go tool nm -size "${binary}" | c++filt >${tmpdir}/symtab.txt 2>&1
-	python3 ./tab2pydic.py ${tmpdir}/symtab.txt >${tmpdir}/out.py 2>&1
-	python3 ./simplify.py ${tmpdir}/out.py >${tmpdir}/data.js 2>&1
+	go tool nm -size "${binary}" | c++filt >${tmpdir}/symtab.txt
+	python3 ./tab2pydic.py ${tmpdir}/symtab.txt >${tmpdir}/out.py
+	python3 ./simplify.py ${tmpdir}/out.py >${tmpdir}/data.js
 }
 
 copy_resources() {
